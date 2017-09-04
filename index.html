@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja-jp">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Todo</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="scripts/app.js"></script>
+</head>
+<body>
+  <h1>Todos</h1>
+  <div id="app">
+    <div>
+      <form v-on:submit.prevent="addTodo(newTodoText)">
+        <input type="text" v-model="newTodoText"/>
+        <input type="submit" value="書き込み" />
+      </form>
+      <ul>
+        <todo v-for="todo in todos" v-bind:todo="todo"></todo>
+      <ul>
+    </div>
+  </div>  
+</body>
+</html>

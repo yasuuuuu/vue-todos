@@ -3,15 +3,12 @@ document.addEventListener("DOMContentLoaded", function(){
   var vm = new Vue({
     el: '#app',
     data: { 
-      todos: [
-        { id: 0, text: '合いびき肉を買ってくる', done: false },
-        { id: 1, text: '胡椒を買ってくる', done: false },
-      ],
+      todos: [],
       newTodoText: ''
     },
     methods: {
       getNewId: function(){
-        return this.todos.length;
+        return new Date().getTime().toString(16) + Math.floor(Math.random() * 10000).toString(16);
       },
       addTodo: function(){
         this.todos.push({ id: this.getNewId(), text: this.newTodoText, done: false })
@@ -26,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function(){
         }
       }
     }
-
   })
 
 });

@@ -20,7 +20,14 @@
         <input type="submit" value="書き込み" />
       </form>
       <ul>
-        <todo v-for="todo in todos" v-bind:todo="todo" v-bind:key="todo.id" v-on:delete-todo="deleteTodo" ></todo>
+        <li v-bind:class="{ completed: todo.done }"
+            v-for="todo in todos"
+            v-bind:todo="todo"
+            v-bind:key="todo.id">
+          <input type="checkbox" v-model="todo.done">
+            {{ todo.text }}
+          <input type="button" v-on:click="deleteTodo(todo.id)" value="削除">
+        </li>
       <ul>
     </div>
   </div>  

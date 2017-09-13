@@ -15,20 +15,12 @@
   <h1>Todos</h1>
   <div id="app">
     <div>
-      <form v-on:submit.prevent="addTodo(newTodoText)">
-        <input type="text" v-model="newTodoText"/>
-        <input type="submit" value="書き込み" />
-      </form>
+      <todo-form v-on:todo-added="todos.push($event)"></todo-form>
       <ul>
-        <li v-bind:class="{ completed: todo.done }"
-            v-for="todo in todos"
-            v-bind:todo="todo"
-            v-bind:key="todo.id">
-          <input type="checkbox" v-model="todo.done">
-            {{ todo.text }}
-          <input type="button" v-on:click="deleteTodo(todo.id)" value="削除">
-        </li>
-      <ul>
+        <template v-for="todo in todos">
+          <todo-list-item v-bind:todo="todo" v-bind:delete-func="deleteTodo"></todo-list-item>
+        </template>
+      </ul>
     </div>
   </div>  
 </body>
